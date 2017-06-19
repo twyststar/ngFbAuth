@@ -8,6 +8,7 @@ import { AuthService } from '../providers/auth.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
+
 export class HomePageComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }

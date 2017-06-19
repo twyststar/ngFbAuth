@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(){
+  loginGoogle(){
     this.authService.loginWithGoogle()
     this.router.navigate(['']);
   }
