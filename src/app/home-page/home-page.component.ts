@@ -18,10 +18,10 @@ export class HomePageComponent implements OnInit {
   user = firebase.auth().currentUser.displayName;
 
   ngOnInit() {
-    this.user=firebase.auth().currentUser.displayName;
   }
   showUser(){
     console.log(firebase.auth().currentUser.displayName)
+    console.log(this.user)
   }
   logout() {
     this.authService.logout();

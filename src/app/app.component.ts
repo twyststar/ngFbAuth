@@ -20,11 +20,11 @@ export class AppComponent {
       // this.user.google.displayName ='';
       // this.user.google.email ='';
       this.router.navigate(['login']);
-    } else {
-      this.isLoggedIn = true;
-      // this.userDisplayName = this.user.google.displayName;
-      // this.user.google.email = this.user.google.email;
-      this.router.navigate(['']);
+    // } else {
+    //   this.isLoggedIn = true;
+    //   // this.userDisplayName = this.user.google.displayName;
+    //   // this.user.google.email = this.user.google.email;
+    //   this.router.navigate(['']);
     }
   }
 

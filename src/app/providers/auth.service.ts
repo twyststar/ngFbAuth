@@ -3,12 +3,16 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { User } from '../user.model';
+
 // import { AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
 
 @Injectable()
 export class AuthService {
   userDisplayName: string = null;
   userEmail:string;
+  uid:string;
+   
   user: Observable<firebase.User>;
   provider = new firebase.auth.GoogleAuthProvider();
   constructor(public afAuth: AngularFireAuth, private router: Router) {
@@ -19,17 +23,28 @@ export class AuthService {
     this.afAuth.auth.signInWithPopup(this.provider).then((result) => {
       this.userDisplayName = result.user.displayName;
       this.userEmail = result.user.email;
-      this.router.navigate(['home'])
-      })
-    }
-
-
-  makeUser(){
-
+      this.uid = result.user.uid;
+      // var newUser = new User (this.userDisplayName, this.userEmail, this.uid, false, 0);
+      // this.users.push(newUser);
+      this.makeUser()
+    })
   }
   logout(){
     this.afAuth.auth.signOut();
   }
+
+
+  makeUser(){
+    // var newUser = new User (this.userDisplayName, this.userEmail, this.uid, false, 0);
+    // this.users.push(newUser);
+      this.router.navigate(['home/' ])
+  }
+
+
+
+
+
+
 
 
 }
