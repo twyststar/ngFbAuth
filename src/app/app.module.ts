@@ -22,11 +22,11 @@ export const firebaseConfig = {
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomePageComponent
   },
   {
-    path: 'login',
+    path: '',
     component: LoginPageComponent
   }
 ]

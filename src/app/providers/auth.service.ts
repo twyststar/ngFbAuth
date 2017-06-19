@@ -2,31 +2,31 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
+import { Router } from '@angular/router';
 // import { AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
 
 @Injectable()
 export class AuthService {
-  userDisplayName: string;
+  userDisplayName: string = null;
   userEmail:string;
   user: Observable<firebase.User>;
   provider = new firebase.auth.GoogleAuthProvider();
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
     this.user = afAuth.authState;
   }
 
   loginWithGoogle(){
     this.afAuth.auth.signInWithPopup(this.provider).then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // var token = result.credential.accessToken;
-      // The signed-in user info.
       this.userDisplayName = result.user.displayName;
       this.userEmail = result.user.email;
-      console.log(this.userDisplayName);
-      console.log(this.userEmail);
+      this.router.navigate(['home'])
       })
     }
 
+
+  makeUser(){
+
+  }
   logout(){
     this.afAuth.auth.signOut();
   }

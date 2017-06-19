@@ -16,9 +16,15 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
+
   loginGoogle(){
     this.authService.loginWithGoogle()
-    this.router.navigate(['']);
+    // if (this.authService.userDisplayName != null){
+    // this.router.navigate(['home']);
   }
 
 }
+
+
+// .then((result) => {
+//   this.router.navigate(['']);
